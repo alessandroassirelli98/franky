@@ -1,0 +1,16 @@
+#!/bin/bash
+set -e
+
+echo "Installing Pinocchio ..."
+TMP_DIR="$(mktemp -d)"
+git clone --recursive https://github.com/stack-of-tasks/pinocchio "${TMP_DIR}"
+cd "${TMP_DIR}"
+git checkout master
+mkdir build
+cd build
+cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr/local
+
+make -j8 install || make install
+cd /
+rm -rf "${TMP_DIR}"
+echo "Pinocchio installed successfully"

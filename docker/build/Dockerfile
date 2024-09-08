@@ -2,7 +2,7 @@ FROM quay.io/pypa/manylinux2014_x86_64:latest
 
 LABEL maintainer="Tim Schneider <tim@robot-learning.de>"
 
-RUN yum -y install poco-devel* zip
+RUN yum -y install poco-devel* zip wget
 
 ADD docker/common/ /tmp/common/
 ARG LIBFRANKA_VERSION

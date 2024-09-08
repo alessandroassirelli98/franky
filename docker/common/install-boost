@@ -1,0 +1,11 @@
+#!/bin/bash
+set -e
+
+echo "Installing Boost ..."
+wget https://cfhcable.dl.sourceforge.net/project/boost/boost/1.74.0/boost_1_74_0.tar.gz
+tar -xzf boost_1_74_0.tar.gz
+cd boost_1_74_0
+./bootstrap.sh --prefix=/opt/boost
+./b2 install --prefix=/opt/boost --with=all -j8
+cd ..
+echo "Boost installed ..."
